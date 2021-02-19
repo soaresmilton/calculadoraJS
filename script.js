@@ -10,42 +10,42 @@ function createCalculator() {
         if (el.classList.contains('btn-num')) {
           this.displayValue(el.innerText);
         }
-        if (el.classList.contains('btn-clear')) { 
+        if (el.classList.contains('btn-clear')) {
           this.clearDisplay();
         }
-        if(el.classList.contains('btn-del')) {
+        if (el.classList.contains('btn-del')) {
           this.deleteOne();
         }
-        if(el.classList.contains('btn-eq')) {
+        if (el.classList.contains('btn-eq')) {
           this.calculate();
         }
       });
     },
-    init(){
+    init() {
       this.clickRecognition();
     },
-    displayValue(value){
+    displayValue(value) {
       this.display.value += value
     },
-    clearDisplay(){
+    clearDisplay() {
       this.display.value = '';
     },
-    deleteOne(){
+    deleteOne() {
       this.display.value = this.display.value.slice(0, -1);
     },
 
-    calculate(){
+    calculate() {
       let conta = this.display.value;
 
       try {
         conta = eval(conta);
-        if(!conta) {
+        if (!conta || conta === conta / 0) {
           alert('Conta inválida');
           return;
         }
 
         this.display.value = String(conta);
-      } catch(e) {
+      } catch (error) {
         alert('Conta inválida');
       }
     }
