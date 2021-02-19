@@ -39,6 +39,10 @@ function createCalculator() {
 
       try {
         conta = eval(conta);
+
+        if(conta === conta * 0) {
+          return this.display.value = '0';
+        }
         if (!conta || conta === conta / 0) {
           alert('Conta inválida');
           return;
